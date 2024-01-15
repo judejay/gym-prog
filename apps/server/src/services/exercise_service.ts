@@ -1,17 +1,22 @@
 import axios from "axios";
-
+import { CONFIG } from "../config";
+import * as EXERCISES from "../data/exercises.json"; // Import the EXERCISES object from the appropriate module
 export async function fetchExerciseData() {
   try {
-    const response = await axios.get(
-      "https://api.api-ninjas.com/v1/exercises",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Key": "USEKEY",
-        },
-      }
-    );
-    return response.data;
+    if (CONFIG.nodeEnv === "dev") {
+      return EXERCISES.exercises;
+    } else {
+      const response = await axios.get(
+        "https://api.api-ninjas.com/v1/exercises",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": CONFIG.ApiKey,
+          },
+        }
+      );
+      return response.data;
+    }
   } catch (error) {
     console.error(error);
   }
