@@ -13,9 +13,9 @@ function App() {
         const payload = await response.json();
         if (response.ok) {
           console.log('response', response);
-          console.log('payload', payload.exercises.exercises);
+          //  console.log('payload', payload.exercises.exercises);
           setExercises(payload.exercises.exercises);
-          console.log('exercises', exercises);
+          //console.log('exercises', exercises);
         } else {
           setErrorMessage(payload.message);
         }
@@ -23,7 +23,7 @@ function App() {
       .catch(() => {
         setErrorMessage('Network error');
       });
-  }, [exercises]);
+  }, []);
 
   return (
     <div>
