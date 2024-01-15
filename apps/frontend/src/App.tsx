@@ -12,6 +12,7 @@ function App() {
       .then(async (response) => {
         const payload = await response.json();
         if (response.ok) {
+          console.log('response', response);
           console.log('payload', payload.exercises.exercises);
           setExercises(payload.exercises.exercises);
           console.log('exercises', exercises);
@@ -19,10 +20,10 @@ function App() {
           setErrorMessage(payload.message);
         }
       })
-      .catch((_networkError) => {
+      .catch(() => {
         setErrorMessage('Network error');
       });
-  }, []);
+  }, [exercises]);
 
   return (
     <div>

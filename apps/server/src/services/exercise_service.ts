@@ -3,8 +3,11 @@ import { CONFIG } from "../config";
 import * as EXERCISES from "../data/exercises.json"; // Import the EXERCISES object from the appropriate module
 export async function fetchExerciseData() {
   try {
-    if (CONFIG.nodeEnv === "dev") {
-      return EXERCISES.exercises;
+    const environment = CONFIG.nodeEnv;
+    if (environment === "dev") {
+      console.log("📨  Fetching exercises from local file...");
+      console.log("exercises", EXERCISES.exercises);
+      return [EXERCISES.exercises];
     } else {
       const response = await axios.get(
         "https://api.api-ninjas.com/v1/exercises",
@@ -15,6 +18,7 @@ export async function fetchExerciseData() {
           },
         }
       );
+      console.log("📨  Fetching exercises from API...");
       return response.data;
     }
   } catch (error) {

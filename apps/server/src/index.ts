@@ -9,11 +9,12 @@ import { CONFIG } from "./config";
 const app = express();
 const port = CONFIG.port || 3000;
 const environment = CONFIG.nodeEnv;
-// const corsOptions = {
-// 	origin: '*',
-// 	credentials: false, //access-control-allow-credentials:true
-// 	optionSuccessStatus: 200
-// };
+
+const corsOptions = {
+  origin: "*",
+  credentials: false, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 try {
   printNewLine();
@@ -28,7 +29,7 @@ try {
   app.use(express.urlencoded({ extended: true }));
 
   console.log("👉 Enabling CORS...");
-  app.use(cors());
+  app.use(cors(corsOptions));
 
   initializeRoutes(app);
 
