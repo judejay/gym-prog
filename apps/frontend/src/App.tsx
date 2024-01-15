@@ -1,35 +1,47 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Exercise } from './types/types';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const [exercises, setExercises] = useState<Exercise[]>();
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/exercises')
+      .then(async (response) => {
+        const payload = await response.json();
+        if (response.ok) {
+          console.log('payload', payload.exercises.exercises);
+          setExercises(payload.exercises.exercises);
+          console.log('exercises', exercises);
+        } else {
+          setErrorMessage(payload.message);
+        }
+      })
+      .catch((_networkError) => {
+        setErrorMessage('Network error');
+      });
+  }, []);
 
   return (
-    <>
+    <div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Exercises returned from server</h1>
+
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+
+      <ul>
+        {exercises &&
+          exercises?.map((exc, index) => {
+            return <li key={index}>{exc.name}</li>;
+          })}
+      </ul>
+    </div>
+  );
+};
+
 
 export default App
