@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Exercise } from './types/types';
+import ExerciseCard from './components/ExcerciseCard';
 
 function App() {
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -36,7 +37,7 @@ function App() {
       <ul>
         {exercises &&
           exercises?.map((exc, index) => {
-            return <li key={index}>{exc.name}</li>;
+            return <ExerciseCard name={exc.name} duration={10} key={index}></ExerciseCard>;
           })}
       </ul>
     </div>
