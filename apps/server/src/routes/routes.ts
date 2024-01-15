@@ -4,7 +4,6 @@ import {
   fetchExerciseData,
   weaklyValidateRoutine,
 } from "../services/exercise_service";
-import * as EXERCISES from "../data/exercises.json";
 export function initializeRoutes(app: Express) {
   console.log("🏗️  Setting up routers...");
 
