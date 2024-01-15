@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Exercise } from './types/types';
-import ExerciseCard from './components/ExcerciseCard';
+import ExerciseCard from './components/ExerciseCard';
 
 function App() {
   const [errorMessage, setErrorMessage] = useState<string>();
