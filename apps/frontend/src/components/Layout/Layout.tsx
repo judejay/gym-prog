@@ -1,14 +1,22 @@
 import React from 'react';
-import { AppShell, Burger } from '@mantine/core';
+import { AppShell, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import App from '../../App';
+import { MantineLogo } from '@mantinex/mantine-logo';
+
+import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
+import { meta } from '@mantinex/mantine-meta';
 
 
 interface LayoutProps {
     children: React.ReactNode;
 }
 const Layout: React.FC<LayoutProps> = () => {
-    const [opened, { toggle }] = useDisclosure();
+    const [opened] = useDisclosure();
+
+    function searchHandlers(): void {
+        throw new Error('Function not implemented.');
+    }
 
     return (
         <AppShell
@@ -20,9 +28,20 @@ const Layout: React.FC<LayoutProps> = () => {
             }}
             padding="md"
         >
-            <AppShell.Header>
-                <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                <div>Logo</div>
+            <AppShell.Header className="zeroRight">
+                <Container size="xl" px="md" className="inner">
+
+                    <HeaderControls
+                        visibleFrom="sm"
+                        githubLink={meta.gitHubLinks.mantineUi}
+                        withDirectionToggle={false}
+                        discordLink={meta.discordLink}
+                    />
+
+                    <Group hiddenFrom="sm">
+                        <ColorSchemeControl />
+                    </Group>
+                </Container>
             </AppShell.Header>
 
             <AppShell.Navbar p="md"><App /></AppShell.Navbar>
