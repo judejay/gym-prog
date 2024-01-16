@@ -3,7 +3,8 @@ import { AppShell, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import App from '../../App';
 import { MantineLogo } from '@mantinex/mantine-logo';
-
+import '@mantinex/mantine-logo/styles.css';
+import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
 
