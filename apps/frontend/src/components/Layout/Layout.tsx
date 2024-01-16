@@ -1,8 +1,13 @@
 import React from 'react';
 import { AppShell, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import App from '../../App';
 
-const Layout: React.FC = () => {
+
+interface LayoutProps {
+    children: React.ReactNode;
+}
+const Layout: React.FC<LayoutProps> = () => {
     const [opened, { toggle }] = useDisclosure();
 
     return (
@@ -20,7 +25,7 @@ const Layout: React.FC = () => {
                 <div>Logo</div>
             </AppShell.Header>
 
-            <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
+            <AppShell.Navbar p="md"><App /></AppShell.Navbar>
 
             <AppShell.Main>Main</AppShell.Main>
         </AppShell>

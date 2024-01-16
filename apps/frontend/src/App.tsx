@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Exercise } from './types/types';
 import ExerciseCard from './components/ExerciseCard';
+import '@mantine/core/styles.css';
+
 
 function App() {
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -41,7 +43,7 @@ function App() {
       </ul>
     </div>
   );
-};
+}
 
 
 export default App
