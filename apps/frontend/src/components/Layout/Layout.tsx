@@ -6,6 +6,7 @@ import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
+import Detail from '../Detail/Detail';
 
 
 interface LayoutProps {
@@ -54,7 +55,7 @@ const Layout: React.FC<LayoutProps> = () => {
 
             <AppShell.Navbar p="md"><App /></AppShell.Navbar>
 
-            <AppShell.Main>Main</AppShell.Main>
+            <AppShell.Main><Detail /></AppShell.Main>
         </AppShell>
     );
 };
