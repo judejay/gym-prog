@@ -88,6 +88,8 @@
   text-decoration: none;
   border-top-right-radius: var(--mantine-radius-md);
   border-bottom-right-radius: var(--mantine-radius-md);
+  border-top-left-radius: var(--mantine-radius-md);
+  border-bottom-left-radius: var(--mantine-radius-md);
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   padding: 0 var(--mantine-spacing-md);
   font-size: var(--mantine-font-size-sm);
