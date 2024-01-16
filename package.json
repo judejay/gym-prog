@@ -1,6 +1,7 @@
 {
   "name": "gym-prog",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

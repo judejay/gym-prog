@@ -15,7 +15,7 @@ TODO
 - [Installation](#installation)
   npm install in the separate projects folders
   scripts can be run for client and server.
-  TODO single scripts to run all projects
+  single scripts to run all projects
 
 ## Usage
 
