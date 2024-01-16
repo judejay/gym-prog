@@ -53,7 +53,7 @@ const Layout: React.FC<LayoutProps> = () => {
                 </Container>
             </AppShell.Header>
 
-            <AppShell.Navbar p="md"><App /></AppShell.Navbar>
+            <AppShell.Navbar ><App /></AppShell.Navbar>
 
             <AppShell.Main><ListOtDetails /></AppShell.Main>
         </AppShell>
