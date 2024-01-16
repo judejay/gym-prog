@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutProps> = () => {
                     />
                     <Group mt="lg" className='btn-group' justify="center" grow pb="xl" px="md">
                         <Button variant="default">Log in</Button>
-                        <Button>Sign up</Button>
+                        <Button>Sign up!!!</Button>
                     </Group>
                     <Group hiddenFrom="sm">
 
