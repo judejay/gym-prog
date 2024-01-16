@@ -45,23 +45,21 @@ function App() {
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           </div>
 
-          <ul>
-            {exercises &&
-              exercises.map((link) => (
-                <a
-                  data-active={activeLink === link.name || undefined}
-                  href="#"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setActiveLink(link.name);
-                  }}
-                  key={link.name}
-                >
-                  {link.name}
-                </a>
-              ))}
+          {exercises &&
+            exercises.map((link) => (
+              <a className='link'
+                data-active={activeLink === link.name || undefined}
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setActiveLink(link.name);
+                }}
+                key={link.name}
+              >
+                {link.name}
+              </a>
+            ))}
 
-          </ul>
         </div>
       </div>
     </nav>
