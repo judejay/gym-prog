@@ -16,9 +16,9 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1",
-    "@mantine/core": "7.4.1",
+    "@mantine/core": "^7.4.1",
     "@mantine/hooks": "7.4.1",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0"
@@ -63,5 +63,5 @@
     "vite": "^5.0.10",
     "vite-tsconfig-paths": "^4.2.2",
     "vitest": "^1.1.0"
-}
+  }
 }
