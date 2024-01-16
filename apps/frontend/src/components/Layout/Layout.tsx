@@ -1,8 +1,7 @@
 import React from 'react';
-import { AppShell, Container, Group } from '@mantine/core';
+import { AppShell, Burger, Button, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import App from '../../App';
-import { MantineLogo } from '@mantinex/mantine-logo';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
@@ -13,7 +12,7 @@ interface LayoutProps {
     children: React.ReactNode;
 }
 const Layout: React.FC<LayoutProps> = () => {
-    const [opened] = useDisclosure();
+    const [opened, { toggle }] = useDisclosure();
 
     function searchHandlers(): void {
         throw new Error('Function not implemented.');
@@ -29,19 +28,27 @@ const Layout: React.FC<LayoutProps> = () => {
             }}
             padding="md"
         >
-            <AppShell.Header className="zeroRight">
+            <AppShell.Header className="zeroRight" >
+                <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+
                 <Container size="xl" px="md" className="inner">
 
                     <HeaderControls
+                        className='headerControls'
                         visibleFrom="sm"
                         githubLink={meta.gitHubLinks.mantineUi}
-                        withDirectionToggle={false}
+                        withDirectionToggle={true}
                         discordLink={meta.discordLink}
                     />
-
+                    <Group mt="lg" className='btn-group' justify="center" grow pb="xl" px="md">
+                        <Button variant="default">Log in</Button>
+                        <Button>Sign up</Button>
+                    </Group>
                     <Group hiddenFrom="sm">
+
                         <ColorSchemeControl />
                     </Group>
+
                 </Container>
             </AppShell.Header>
 
