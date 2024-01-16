@@ -7,6 +7,7 @@ import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
 import ListOtDetails from '../ListOfDetails/ListOfDetails';
+import SelectGroup from '../SelectGroup/SelectGroup';
 
 
 interface LayoutProps {
@@ -33,7 +34,6 @@ const Layout: React.FC<LayoutProps> = () => {
                 <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
 
                 <Container size="xl" px="md" className="inner">
-
                     <HeaderControls
                         className='headerControls'
                         visibleFrom="sm"
@@ -41,6 +41,8 @@ const Layout: React.FC<LayoutProps> = () => {
                         withDirectionToggle={true}
                         discordLink={meta.discordLink}
                     />
+                    <SelectGroup />
+
                     <Group mt="lg" className='btn-group' justify="center" grow pb="xl" px="md">
                         <Button variant="default">Log in</Button>
                         <Button>Sign up!!!</Button>
