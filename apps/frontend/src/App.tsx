@@ -32,35 +32,33 @@ function App() {
 
   return (
     <nav className="navbar">
-      <div className="wrapper">
-        <div className="aside">
-          <div className="logo">
-            <MantineLogo type="mark" size={30} /> {/* Use the MantineLogo component */}
-          </div>
-
-
-
-          <div>
-
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-          </div>
-
-          {exercises &&
-            exercises.map((link) => (
-              <a className='link'
-                data-active={activeLink === link.name || undefined}
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setActiveLink(link.name);
-                }}
-                key={link.name}
-              >
-                {link.name}
-              </a>
-            ))}
-
+      <div className="aside">
+        <div className="logo">
+          <MantineLogo type="mark" size={30} /> {/* Use the MantineLogo component */}
         </div>
+
+
+
+        <div>
+
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        </div>
+
+        {exercises &&
+          exercises.map((link) => (
+            <a className='link'
+              data-active={activeLink === link.name || undefined}
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                setActiveLink(link.name);
+              }}
+              key={link.name}
+            >
+              {link.name}
+            </a>
+          ))}
+
       </div>
     </nav>
   );

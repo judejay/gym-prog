@@ -6,7 +6,7 @@ import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
-import Detail from '../Detail/Detail';
+import ListOtDetails from '../ListOfDetails/ListOfDetails';
 
 
 interface LayoutProps {
@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = () => {
                 breakpoint: 'sm',
                 collapsed: { mobile: !opened },
             }}
-            padding="md"
+            padding="sm"
         >
             <AppShell.Header className="zeroRight" >
                 <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -55,7 +55,7 @@ const Layout: React.FC<LayoutProps> = () => {
 
             <AppShell.Navbar p="md"><App /></AppShell.Navbar>
 
-            <AppShell.Main><Detail /></AppShell.Main>
+            <AppShell.Main><ListOtDetails /></AppShell.Main>
         </AppShell>
     );
 };

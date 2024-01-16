@@ -1,6 +1,5 @@
 import { Paper, Text, ThemeIcon, rem } from '@mantine/core';
 import { IconColorSwatch } from '@tabler/icons-react';
-import classes from './CardGradient.module.css';
 import './Detail.css'
 
 export default function Detail() {
