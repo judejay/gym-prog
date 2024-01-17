@@ -1,33 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './SideMenu.css'
-import { Exercise } from './types/types';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import '@mantinex/mantine-logo/styles.css';
 import '@mantine/core/styles.css';
+import { useMyContext } from "../../hooks/useContext";
 
 function SideMenu() {
-  const [errorMessage, setErrorMessage] = useState<string>();
-  const [exercises, setExercises] = useState<Exercise[]>();
+  const [errorMessage] = useState<string>();
   const [activeLink, setActiveLink] = useState('Settings');
+  const { data } = useMyContext();
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/exercises')
-      .then(async (response) => {
-        const payload = await response.json();
-        if (response.ok) {
-          console.log('response', response);
-          //  console.log('payload', payload.exercises.exercises);
-          setExercises(payload.exercises.exercises);
-          //console.log('exercises', exercises);
-        } else {
-          setErrorMessage(payload.message);
-        }
-      })
-      .catch(() => {
-        setErrorMessage('Network error');
-      });
-  }, []);
 
+  console.log("sidemenu data", data);
 
 
   return (
@@ -44,8 +28,8 @@ function SideMenu() {
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
 
-        {exercises &&
-          exercises.map((link) => (
+        {data &&
+          data.map((link) => (
             <a className='link'
               data-active={activeLink === link.name || undefined}
               href="#"

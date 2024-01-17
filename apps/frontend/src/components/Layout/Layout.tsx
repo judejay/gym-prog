@@ -1,13 +1,13 @@
 import React from 'react';
 import { AppShell, Burger, Button, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import App from '../../SideMenu';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
 import ListOtDetails from '../ListOfDetails/ListOfDetails';
 import SelectGroup from '../SelectGroup/SelectGroup';
+import SideMenu from '../SideMenu/SideMenu';
 
 
 interface LayoutProps {
@@ -55,7 +55,7 @@ const Layout: React.FC<LayoutProps> = () => {
                 </Container>
             </AppShell.Header>
 
-            <AppShell.Navbar ><App /></AppShell.Navbar>
+            <AppShell.Navbar ><SideMenu /></AppShell.Navbar>
 
             <AppShell.Main><ListOtDetails /></AppShell.Main>
         </AppShell>
