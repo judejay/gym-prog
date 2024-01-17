@@ -5,6 +5,9 @@ import { useMyContext } from '../../hooks/useContext';
 function ListOtDetails() {
     const { selectedExercise } = useMyContext();
     console.log("selected", selectedExercise);
+    if (!selectedExercise) {
+        return (<h1>no exercise selected</h1>);
+    }
     return (
         <Flex className="listOfDetails"
             mih={50}
