@@ -3,7 +3,7 @@ export type Exercise = {
   type: string;
   description: string;
   difficulty: string;
-  instruction: string;
+  instructions: string;
   muscle: string;
   equipment: string;
   exerciseId?: string;
