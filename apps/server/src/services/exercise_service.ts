@@ -1,6 +1,34 @@
 import axios from "axios";
 import { CONFIG } from "../config";
 import * as EXERCISES from "../data/exercises.json"; // Import the EXERCISES object from the appropriate module
+import youtubeSearch from "youtube-search";
+
+export type Exercise = {
+  name: string;
+  type: string;
+  description: string;
+  difficulty: string;
+  instructions: string;
+  muscle: string;
+  equipment: string;
+  exerciseId?: string;
+  videoUrl?: string;
+  sets?: number;
+  reps?: number;
+  rest?: number;
+  order?: number;
+};
+
+var opts: youtubeSearch.YouTubeSearchOptions = {
+  maxResults: 1,
+  key: "AIzaSyAsgZ7CqbJGBBrC9xd-E22O7gA2S7NQk1w ",
+};
+
+//  youtubeSearch("jsconf", opts, (err: any, results: any) => {
+//   if (err) return console.log(err);
+
+//   console.dir(results);
+// });
 
 export async function fetchRawExerciseData() {
   try {
@@ -51,8 +79,25 @@ export async function handleRoutine(routine: any) {
 }
 
 export async function fetchExerciseData() {
-  return fetchRawExerciseData().then((data) => {
-    console.log("📨  Cooking exercises Data...");
-    return data[0];
-  });
+  const data = await fetchRawExerciseData();
+  console.log("📨  Cooking exercises Data...");
+
+  const exercises = await Promise.all(
+    data[0].map(async (exercise: Exercise) => {
+      return new Promise((resolve, reject) => {
+        youtubeSearch(exercise.name, opts, (err: any, results: any) => {
+          if (err) {
+            console.log(err);
+            reject(err);
+          } else {
+            exercise.videoUrl = results[0].link;
+            console.dir(results[0].link);
+            resolve(exercise);
+          }
+        });
+      });
+    })
+  );
+
+  return exercises;
 }
