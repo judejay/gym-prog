@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppShell, Burger, Button, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import App from '../../App';
+import App from '../../SideMenu';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
 import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';

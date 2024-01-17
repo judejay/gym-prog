@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import './SideMenu.css'
 import { Exercise } from './types/types';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import '@mantinex/mantine-logo/styles.css';
 import '@mantine/core/styles.css';
 
-function App() {
+function SideMenu() {
   const [errorMessage, setErrorMessage] = useState<string>();
   const [exercises, setExercises] = useState<Exercise[]>();
   const [activeLink, setActiveLink] = useState('Settings');
@@ -65,4 +65,4 @@ function App() {
 }
 
 
-export default App
+export default SideMenu
