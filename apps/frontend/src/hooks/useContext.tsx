@@ -9,9 +9,11 @@ interface Props {
 }
 
 interface ContextProps {
+  selectedExercise: Exercise | null;
   fetchData: () => Promise<ResponseData>;
   data: Exercise[];
   setData: React.Dispatch<React.SetStateAction<Exercise[]>>;
+  setSelectedExercise: React.Dispatch<React.SetStateAction<Exercise | null>>;
 }
 export const ExerciseContext = createContext<ContextProps | undefined>(
   undefined
@@ -30,7 +32,7 @@ export const useMyContext = (): ContextProps => {
 
 export const MyContextProvider: React.FC<Props> = ({ children }) => {
   const [data, setData] = useState<Exercise[]>([]);
-
+  const [selected, setSelected] = useState<Exercise | null>(null);
   const fetchData = useCallback(async (): Promise<ResponseData> => {
     const response = await fetch(serverUrl);
     const data = await response.json();
@@ -54,6 +56,8 @@ export const MyContextProvider: React.FC<Props> = ({ children }) => {
     fetchData,
     data,
     setData,
+    selectedExercise: selected,
+    setSelectedExercise: setSelected,
   };
 
   return (

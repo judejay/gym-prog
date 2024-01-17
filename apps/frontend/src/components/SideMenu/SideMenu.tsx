@@ -8,11 +8,20 @@ import { useMyContext } from "../../hooks/useContext";
 function SideMenu() {
   const [errorMessage] = useState<string>();
   const [activeLink, setActiveLink] = useState('Settings');
-  const { data } = useMyContext();
+  const { data, selectedExercise, setSelectedExercise } = useMyContext();
 
 
   console.log("sidemenu data", data);
 
+
+  function setActiveExercise(name: string) {
+    setActiveLink(name);
+    const exercise = data.find((exercise) => exercise.name === name);
+    if (exercise) {
+      setSelectedExercise(exercise);
+    }
+    console.log("exercise selected", selectedExercise);
+  }
 
   return (
     <nav className="navbar">
@@ -35,7 +44,7 @@ function SideMenu() {
               href="#"
               onClick={(event) => {
                 event.preventDefault();
-                setActiveLink(link.name);
+                setActiveExercise(link.name);
               }}
               key={link.name}
             >
