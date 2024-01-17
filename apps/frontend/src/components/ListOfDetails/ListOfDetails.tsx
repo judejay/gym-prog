@@ -1,11 +1,11 @@
 import { Flex } from '@mantine/core';
 import Detail from '../Detail/Detail';
+import './ListOfDetails.css';
 function ListOtDetails() {
     return (
-        <Flex
+        <Flex className="listOfDetails"
             mih={50}
             bg="rgba(0, 0, 0, .3)"
-            gap="md"
             justify="flex-start"
             align="flex-start"
             direction="row"
