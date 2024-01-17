@@ -1,12 +1,16 @@
 import { Paper, Text, ThemeIcon, rem } from '@mantine/core';
 import { IconColorSwatch } from '@tabler/icons-react';
 import './Detail.css'
+import { useMyContext } from '../../hooks/useContext';
 
 type DetailProps = {
-    name?: string;
+
 }
-const Detail: React.FC<DetailProps> = ({ name }) => {
+const Detail: React.FC<DetailProps> = () => {
+    const { selectedExercise } = useMyContext();
+    console.log("selected", selectedExercise);
     return (
+        selectedExercise &&
         <Paper withBorder radius="md" className="card">
             <ThemeIcon
                 size="xl"
@@ -18,7 +22,7 @@ const Detail: React.FC<DetailProps> = ({ name }) => {
             </ThemeIcon>
             <Text size="xl" fw={500} mt="md">
 
-                {name}            </Text>
+                {selectedExercise.name}            </Text>
             <Text size="sm" mt="sm" c="dimmed">
                 Extend default theme with any amount of additional colors, replace shadows, radius, spacing,
                 fonts and many other properties to match your design requirements. Mantine theme is just an
@@ -26,6 +30,8 @@ const Detail: React.FC<DetailProps> = ({ name }) => {
                 your own components.
             </Text>
         </Paper>
+
+
     );
 }
 
