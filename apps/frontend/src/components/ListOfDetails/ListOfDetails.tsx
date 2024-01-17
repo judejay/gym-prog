@@ -1,5 +1,5 @@
 import { Flex } from '@mantine/core';
-import Detail from '../Detail/Detail';
+import Detail from '../Instructions/Instructions';
 import './ListOfDetails.css';
 import { useMyContext } from '../../hooks/useContext';
 import TabsContainer from '../TabsContainer/TabsContainer';

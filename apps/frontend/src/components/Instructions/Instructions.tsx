@@ -1,12 +1,12 @@
 import { Paper, Text, ThemeIcon, rem } from '@mantine/core';
 import { IconColorSwatch } from '@tabler/icons-react';
-import './Detail.css'
+import './Instructions.css'
 import { useMyContext } from '../../hooks/useContext';
 
-type DetailProps = {
+type InstructionsProps = {
 
 }
-const Detail: React.FC<DetailProps> = () => {
+const Instructions: React.FC<InstructionsProps> = () => {
     const { selectedExercise } = useMyContext();
     console.log("selected", selectedExercise);
     return (
@@ -32,4 +32,4 @@ const Detail: React.FC<DetailProps> = () => {
     );
 }
 
-export default Detail;
+export default Instructions;
