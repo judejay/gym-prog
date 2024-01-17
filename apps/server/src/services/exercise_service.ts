@@ -1,12 +1,12 @@
 import axios from "axios";
 import { CONFIG } from "../config";
 import * as EXERCISES from "../data/exercises.json"; // Import the EXERCISES object from the appropriate module
-export async function fetchExerciseData() {
+
+export async function fetchRawExerciseData() {
   try {
     const environment = CONFIG.nodeEnv;
     if (environment === "dev") {
       console.log("📨  Fetching exercises from local file...");
-      console.log("exercises", EXERCISES.exercises);
       return [EXERCISES.exercises];
     } else {
       const response = await axios.get(
@@ -48,4 +48,11 @@ export async function handleRoutine(routine: any) {
     justTalked: false,
     message: "routine received.",
   };
+}
+
+export async function fetchExerciseData() {
+  return fetchRawExerciseData().then((data) => {
+    console.log("📨  Cooking exercises Data...");
+    return data[0];
+  });
 }

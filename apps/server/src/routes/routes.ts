@@ -43,8 +43,9 @@ function addAPIRoutes(app: Express) {
   });
   console.log("📨  Adding GET exercises route...");
   apiRouter.get("/exercises/", async (req, res) => {
+    const exercises = await fetchExerciseData();
     const result = JSON.stringify({
-      exercises: EXERCISE,
+      exercises: exercises,
     });
     res.status(200).send(result);
   });

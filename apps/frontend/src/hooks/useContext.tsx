@@ -36,7 +36,8 @@ export const MyContextProvider: React.FC<Props> = ({ children }) => {
   const fetchData = useCallback(async (): Promise<ResponseData> => {
     const response = await fetch(serverUrl);
     const data = await response.json();
-    return data.exercises;
+    console.log("data from context", data);
+    return data;
   }, []);
 
   useEffect(() => {
