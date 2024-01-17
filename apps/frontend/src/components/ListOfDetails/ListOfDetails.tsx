@@ -1,7 +1,10 @@
 import { Flex } from '@mantine/core';
 import Detail from '../Detail/Detail';
 import './ListOfDetails.css';
+import { useMyContext } from '../../hooks/useContext';
 function ListOtDetails() {
+    const { selectedExercise } = useMyContext();
+    console.log("selected", selectedExercise);
     return (
         <Flex className="listOfDetails"
             mih={50}
@@ -11,7 +14,7 @@ function ListOtDetails() {
             direction="row"
             wrap="wrap"
         >
-            <Detail />
+            <Detail name={selectedExercise?.name} />
             <Detail />
             <Detail />
 

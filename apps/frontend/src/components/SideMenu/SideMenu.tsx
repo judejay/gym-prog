@@ -27,7 +27,7 @@ function SideMenu() {
     <nav className="navbar">
       <div className="aside">
         <div className="logo">
-          <MantineLogo type="mark" size={30} /> {/* Use the MantineLogo component */}
+          <MantineLogo type="mark" size={30} />
         </div>
 
 

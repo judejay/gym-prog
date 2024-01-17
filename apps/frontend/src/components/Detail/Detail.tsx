@@ -2,7 +2,10 @@ import { Paper, Text, ThemeIcon, rem } from '@mantine/core';
 import { IconColorSwatch } from '@tabler/icons-react';
 import './Detail.css'
 
-export default function Detail() {
+type DetailProps = {
+    name?: string;
+}
+const Detail: React.FC<DetailProps> = ({ name }) => {
     return (
         <Paper withBorder radius="md" className="card">
             <ThemeIcon
@@ -14,8 +17,8 @@ export default function Detail() {
                 <IconColorSwatch style={{ width: rem(28), height: rem(28) }} stroke={1.5} />
             </ThemeIcon>
             <Text size="xl" fw={500} mt="md">
-                Theming documentation
-            </Text>
+
+                {name}            </Text>
             <Text size="sm" mt="sm" c="dimmed">
                 Extend default theme with any amount of additional colors, replace shadows, radius, spacing,
                 fonts and many other properties to match your design requirements. Mantine theme is just an
@@ -25,3 +28,5 @@ export default function Detail() {
         </Paper>
     );
 }
+
+export default Detail;
