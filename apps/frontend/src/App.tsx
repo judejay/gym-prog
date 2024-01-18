@@ -19,7 +19,8 @@ function App() {
     return (
         <MyContextProvider >
             <MantineProvider theme={theme}>
-                <Layout children={<SideMenu />} />
+                <Container size="responsive" bg="var(--mantine-color-blue-light)">
+                    <Layout children={<SideMenu />} /></Container>
             </MantineProvider>
         </MyContextProvider>
     );
