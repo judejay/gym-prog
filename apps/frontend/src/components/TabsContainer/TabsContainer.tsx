@@ -3,13 +3,13 @@ import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react'
 import Detail from '../Instructions/Instructions';
 import Video from '../Video/Video';
 import ProgramSettings from '../ProgramSettings/ProgramSettings';
-import './TabsContainer.css';
+
 function TabsContainer() {
   const iconStyle = { width: rem(12), height: rem(12) };
 
   return (
-    <div className='tabs-container'>
-      <Tabs color="rgba(148, 74, 74, 1)" radius="xs" defaultValue="messages">
+    <Container fluid h={50} bg="var(--mantine-color-blue-light)">
+      <Tabs mt={20} color="rgba(148, 74, 74, 1)" radius="xs" defaultValue="messages">
         <Tabs.List><Tabs.Tab value="messages" leftSection={<IconMessageCircle style={iconStyle} />}>
           Instructions
         </Tabs.Tab>
@@ -33,7 +33,7 @@ function TabsContainer() {
           <ProgramSettings />
         </Tabs.Panel>
       </Tabs>
-    </div>
+    </Container>
   );
 }
 

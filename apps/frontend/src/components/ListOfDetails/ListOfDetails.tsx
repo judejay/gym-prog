@@ -12,7 +12,7 @@ function ListOtDetails() {
     return (
         <Flex className="listOfDetails"
             mih={50}
-            bg="rgba(0, 0, 0, .3)"
+            bg="rgba(0, 0, 0, 0)"
             justify="flex-start"
             align="flex-start"
             direction="row"
