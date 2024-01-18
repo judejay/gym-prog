@@ -73,6 +73,16 @@ export async function handleRoutine(routine: any) {
 }
 
 export async function fetchExerciseData() {
+  return fetchRawExerciseData().then((data) => {
+    console.log("📨  Cooking exercises Data...");
+    const exercises = data[0].map((exercise: Exercise) => {
+      exercise.videoUrl = "https://www.youtube.com/embed/w86EalEoFRY";
+      return exercise;
+    });
+    return exercises;
+  });
+}
+/* export async function fetchExerciseData() {
   const data = await fetchRawExerciseData();
   console.log("📨  Cooking exercises Data...");
 
@@ -91,7 +101,8 @@ export async function fetchExerciseData() {
         });
       });
     })
-  );
+  ); 
 
   return exercises;
 }
+*/
