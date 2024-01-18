@@ -21,14 +21,8 @@ export type Exercise = {
 
 var opts: youtubeSearch.YouTubeSearchOptions = {
   maxResults: 1,
-  key: " ",
+  key: CONFIG.YoutubeApiKey,
 };
-
-//  youtubeSearch("jsconf", opts, (err: any, results: any) => {
-//   if (err) return console.log(err);
-
-//   console.dir(results);
-// });
 
 export async function fetchRawExerciseData() {
   try {
