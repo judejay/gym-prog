@@ -21,7 +21,7 @@ export type Exercise = {
 
 var opts: youtubeSearch.YouTubeSearchOptions = {
   maxResults: 1,
-  key: "AIzaSyAsgZ7CqbJGBBrC9xd-E22O7gA2S7NQk1w ",
+  key: " ",
 };
 
 //  youtubeSearch("jsconf", opts, (err: any, results: any) => {
