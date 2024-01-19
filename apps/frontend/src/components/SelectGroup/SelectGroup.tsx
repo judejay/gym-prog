@@ -1,4 +1,4 @@
-import { ComboboxItem, OptionsFilter, Select } from '@mantine/core';
+import { Button, ComboboxItem, OptionsFilter, Popover, Select } from '@mantine/core';
 import './SelectGroup.css';
 import { useMyContext } from '../../hooks/useContext';
 function SelectGroup() {
@@ -13,17 +13,23 @@ function SelectGroup() {
     };
 
     return (
-        <Select className='select'
-            filter={optionsFilter}
-            checkIconPosition="right"
-            mt="md"
-            allowDeselect
-            clearable
-            label="Equipment"
-            placeholder="Pick value"
-            data={['Dumbbells', 'Barbell', 'Atlas Stone', 'Machine', 'Body Only', 'Other']}
-            comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
-        />
+        <Popover width={300} position="bottom" withArrow shadow="md">
+            <Popover.Target>
+                <Button>Filter by Equipment</Button>
+            </Popover.Target>
+            <Popover.Dropdown>
+                <Select className='select'
+                    filter={optionsFilter}
+                    checkIconPosition="right"
+                    mt="md"
+                    allowDeselect
+                    clearable
+                    label="Equipment"
+                    placeholder="Pick value"
+                    data={['Dumbbells', 'Barbell', 'Atlas Stone', 'Machine', 'Body Only', 'Other']}
+                    comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
+                /></Popover.Dropdown>
+        </Popover>
 
     );
 }
