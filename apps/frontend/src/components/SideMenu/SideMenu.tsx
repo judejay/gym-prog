@@ -1,17 +1,16 @@
 import { useState } from 'react'
 import './SideMenu.css'
-import { MantineLogo } from '@mantinex/mantine-logo';
 import '@mantinex/mantine-logo/styles.css';
 import '@mantine/core/styles.css';
 import { useMyContext } from "../../hooks/useContext";
-
+import SelectGroup from '../SelectGroup/SelectGroup';
 function SideMenu() {
   const [errorMessage] = useState<string>();
   const [activeLink, setActiveLink] = useState('Settings');
   const { data, selectedExercise, setSelectedExercise } = useMyContext();
 
 
-  console.log("sidemenu data", data);
+  console.log("sideMenu data", data);
 
 
   function setActiveExercise(name: string) {
@@ -26,8 +25,8 @@ function SideMenu() {
   return (
     <nav className="navbar">
       <div className="aside">
-        <div className="logo">
-          <MantineLogo type="mark" size={30} />
+        <div className='logo'>
+          <SelectGroup />
         </div>
 
 
