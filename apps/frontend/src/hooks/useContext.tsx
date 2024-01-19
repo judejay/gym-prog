@@ -11,8 +11,8 @@ interface Props {
 interface ContextProps {
   selectedExercise: Exercise | null;
   fetchData: () => Promise<ResponseData>;
-  data: Exercise[];
-  setData: React.Dispatch<React.SetStateAction<Exercise[]>>;
+  exerciseData: Exercise[];
+  setExerciseData: React.Dispatch<React.SetStateAction<Exercise[]>>;
   setSelectedExercise: React.Dispatch<React.SetStateAction<Exercise | null>>;
 }
 export const ExerciseContext = createContext<ContextProps | undefined>(
@@ -31,7 +31,7 @@ export const useMyContext = (): ContextProps => {
 };
 
 export const MyContextProvider: React.FC<Props> = ({ children }) => {
-  const [data, setData] = useState<Exercise[]>([]);
+  const [exerciseData, setExerciseData] = useState<Exercise[]>([]);
   const [selected, setSelected] = useState<Exercise | null>(null);
   const fetchData = useCallback(async (): Promise<ResponseData> => {
     const response = await fetch(serverUrl);
@@ -45,18 +45,18 @@ export const MyContextProvider: React.FC<Props> = ({ children }) => {
       try {
         const data = await fetchData();
 
-        setData(data.exercises);
+        setExerciseData(data.exercises);
       } catch (error) {
         console.log(error);
       }
     };
     fetchDataFromApi();
-  }, [fetchData, setData]);
+  }, [fetchData, setExerciseData]);
 
   const contextValue: ContextProps = {
     fetchData,
-    data,
-    setData,
+    exerciseData,
+    setExerciseData,
     selectedExercise: selected,
     setSelectedExercise: setSelected,
   };

@@ -15,9 +15,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = () => {
     const [opened, { toggle }] = useDisclosure();
 
-    function searchHandlers(): void {
-        throw new Error('Function not implemented.');
-    }
 
     return (
         <AppShell
