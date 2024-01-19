@@ -3,6 +3,7 @@ import './SelectGroup.css';
 function SelectGroup() {
     return (
         <Select className='select'
+            allowDeselect
             clearable
             label="Equipment"
             placeholder="Pick value"
