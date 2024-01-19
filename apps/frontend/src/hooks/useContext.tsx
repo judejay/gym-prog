@@ -9,10 +9,12 @@ interface Props {
 }
 
 interface ContextProps {
+  filteredData: Exercise[];
   selectedExercise: Exercise | null;
   fetchData: () => Promise<ResponseData>;
   exerciseData: Exercise[];
   setExerciseData: React.Dispatch<React.SetStateAction<Exercise[]>>;
+  setFilteredData: React.Dispatch<React.SetStateAction<Exercise[]>>;
   setSelectedExercise: React.Dispatch<React.SetStateAction<Exercise | null>>;
 }
 export const ExerciseContext = createContext<ContextProps | undefined>(
@@ -31,12 +33,12 @@ export const useMyContext = (): ContextProps => {
 };
 
 export const MyContextProvider: React.FC<Props> = ({ children }) => {
+  const [filteredData, setFilteredData] = useState<Exercise[]>([]);
   const [exerciseData, setExerciseData] = useState<Exercise[]>([]);
   const [selected, setSelected] = useState<Exercise | null>(null);
   const fetchData = useCallback(async (): Promise<ResponseData> => {
     const response = await fetch(serverUrl);
     const data = await response.json();
-    console.log("data from context", data);
     return data;
   }, []);
 
@@ -54,6 +56,7 @@ export const MyContextProvider: React.FC<Props> = ({ children }) => {
   }, [fetchData, setExerciseData]);
 
   const contextValue: ContextProps = {
+    filteredData, setFilteredData,
     fetchData,
     exerciseData,
     setExerciseData,

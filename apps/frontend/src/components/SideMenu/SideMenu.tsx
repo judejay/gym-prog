@@ -8,21 +8,20 @@ import { Container } from '@mantine/core';
 function SideMenu() {
   const [errorMessage] = useState<string>();
   const [activeLink, setActiveLink] = useState('Settings');
-  const { exerciseData, selectedExercise, setSelectedExercise } = useMyContext();
+  const { exerciseData, setSelectedExercise, filteredData } = useMyContext();
 
-
-  console.log("sideMenu data", exerciseData);
 
 
   function setActiveExercise(name: string) {
     setActiveLink(name);
-    const exercise = exerciseData.find((exercise) => exercise.name === name);
+    const exercise = filteredData.find((exercise) => exercise.name === name);
     if (exercise) {
       setSelectedExercise(exercise);
     }
-    console.log("exercise selected", selectedExercise);
   }
 
+  const exercises = filteredData.length === 0 ? exerciseData : filteredData;
+  console.log("exercises", exercises);
   return (
     <nav className="navbar">
       <div className="aside">
@@ -37,8 +36,8 @@ function SideMenu() {
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           </div>
 
-          {exerciseData &&
-            exerciseData.map((link) => (
+          {exercises &&
+            exercises.map((link) => (
               <a className='link'
                 data-active={activeLink === link.name || undefined}
                 href="#"
