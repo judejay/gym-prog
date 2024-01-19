@@ -1,7 +1,6 @@
 import { Flex } from '@mantine/core';
-import Detail from '../Instructions/Instructions';
 import './ListOfDetails.css';
-import { useMyContext } from '../../hooks/useContext';
+import { useMyContext } from '../../hooks/useMyContext';
 import TabsContainer from '../TabsContainer/TabsContainer';
 function ListOtDetails() {
     const { selectedExercise } = useMyContext();

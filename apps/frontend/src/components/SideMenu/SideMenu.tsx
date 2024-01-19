@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './SideMenu.css'
 import '@mantinex/mantine-logo/styles.css';
 import '@mantine/core/styles.css';
-import { useMyContext } from "../../hooks/useContext";
+import { useMyContext } from "../../hooks/useMyContext";
 import SelectGroup from '../SelectGroup/SelectGroup';
 import { Container } from '@mantine/core';
 function SideMenu() {
@@ -21,7 +21,6 @@ function SideMenu() {
   }
 
   const exercises = filteredData.length === 0 ? exerciseData : filteredData;
-  console.log("exercises", exercises);
   return (
     <nav className="navbar">
       <div className="aside">

@@ -1,7 +1,7 @@
 import { ThemeIcon, Text, rem } from '@mantine/core';
 import { IconColorSwatch } from '@tabler/icons-react';
 import React from 'react';
-import { useMyContext } from '../../hooks/useContext';
+import { useMyContext } from '../../hooks/useMyContext';
 const CardHeading: React.FC = () => {
     const { selectedExercise } = useMyContext();
     return (

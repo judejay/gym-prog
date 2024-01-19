@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMyContext } from '../../hooks/useContext';
+import { useMyContext } from '../../hooks/useMyContext';
 import { AspectRatio, Paper } from '@mantine/core';
 import CardHeading from '../CardHeading/CardHeading';
 

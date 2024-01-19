@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import { Exercise } from "../types/types";
 
 export interface ResponseData {
@@ -8,7 +8,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-interface ContextProps {
+export interface ContextProps {
   filteredData: Exercise[];
   selectedExercise: Exercise | null;
   fetchData: () => Promise<ResponseData>;
@@ -24,13 +24,7 @@ export const ExerciseContext = createContext<ContextProps | undefined>(
 const serverUrl = "http://localhost:3000/api/exercises";
 
 
-export const useMyContext = (): ContextProps => {
-  const context = useContext(ExerciseContext);
-  if (!context) {
-    throw new Error("useMyContext must be used within a MyContextProvider");
-  }
-  return context;
-};
+
 
 export const MyContextProvider: React.FC<Props> = ({ children }) => {
   const [filteredData, setFilteredData] = useState<Exercise[]>([]);

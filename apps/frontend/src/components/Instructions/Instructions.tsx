@@ -1,12 +1,9 @@
-import { Paper, Text, ThemeIcon, rem } from '@mantine/core';
-import { IconColorSwatch } from '@tabler/icons-react';
+import { Paper, Text } from '@mantine/core';
 import './Instructions.css'
-import { useMyContext } from '../../hooks/useContext';
+import { useMyContext } from '../../hooks/useMyContext';
 import CardHeading from '../CardHeading/CardHeading';
-type InstructionsProps = {
 
-}
-const Instructions: React.FC<InstructionsProps> = () => {
+const Instructions: React.FC = () => {
     const { selectedExercise } = useMyContext();
     console.log("selected", selectedExercise);
     return (

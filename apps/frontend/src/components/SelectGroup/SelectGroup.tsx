@@ -1,6 +1,6 @@
 import { ComboboxItem, Select } from '@mantine/core';
 import './SelectGroup.css';
-import { useMyContext } from '../../hooks/useContext';
+import { useMyContext } from '../../hooks/useMyContext';
 import { useState } from 'react';
 function SelectGroup() {
     const { exerciseData, setFilteredData } = useMyContext();
