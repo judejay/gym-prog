@@ -14,7 +14,7 @@ function SideMenu() {
 
   function setActiveExercise(name: string) {
     setActiveLink(name);
-    const exercise = filteredData.find((exercise) => exercise.name === name);
+    const exercise = exercises.find((exercise) => exercise.name === name);
     if (exercise) {
       setSelectedExercise(exercise);
     }
