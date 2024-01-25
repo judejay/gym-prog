@@ -4,7 +4,7 @@ import Layout from "./components/Layout/Layout";
 import SideMenu from "./components/SideMenu/SideMenu";
 //import Router from "./components/router/Router";
 import cx from 'clsx';
-import { Container, MantineProvider, createTheme } from "@mantine/core";
+import { Container, MantineProvider, createTheme, localStorageColorSchemeManager } from "@mantine/core";
 
 const theme = createTheme({
     components: {
@@ -18,7 +18,8 @@ const theme = createTheme({
 function App() {
     return (
         <MyContextProvider >
-            <MantineProvider theme={theme}>
+            <MantineProvider theme={theme} defaultColorScheme="auto"
+                colorSchemeManager={localStorageColorSchemeManager({ key: 'mantine-ui-color-scheme' })}>
                 <Container size="responsive" bg="var(--mantine-color-blue-light)">
                     <Layout children={<SideMenu />} /></Container>
             </MantineProvider>

@@ -1,12 +1,13 @@
 import React from 'react';
-import { AppShell, Burger, Button, Container, Group } from '@mantine/core';
+import { AppShell, Burger, Button, ColorSchemeScript, Container, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
-import { ColorSchemeControl, HeaderControls } from '@mantinex/mantine-header';
+import { ColorSchemeControl, HeaderControls, SearchMobileControl } from '@mantinex/mantine-header';
 import { meta } from '@mantinex/mantine-meta';
 import ListOtDetails from '../ListOfDetails/ListOfDetails';
 import SideMenu from '../SideMenu/SideMenu';
+import { Logo } from '../Logo/Logo';
 
 
 interface LayoutProps {
@@ -27,32 +28,27 @@ const Layout: React.FC<LayoutProps> = () => {
             padding="sm"
         >
             <AppShell.Header className="zeroRight" >
-                <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+                <ColorSchemeScript defaultColorScheme="auto" localStorageKey="mantine-ui-color-scheme" />
 
                 <Container size="xl" px="md" className="inner">
-                    <HeaderControls
-                        className='headerControls'
-                        visibleFrom="sm"
-                        githubLink={meta.gitHubLinks.mantineUi}
-                        withDirectionToggle={true}
-                        discordLink={meta.discordLink}
-                    />
+                    <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+                    <div className="logo">
+                        <Logo size={30} />
+                    </div>
 
-                    <Group mt="lg" className='btn-group' justify="center" grow pb="xl" px="md">
-                        <Button variant="default">Log in</Button>
-                        <Button>Sign up!!!</Button>
-                    </Group>
-                    <Group hiddenFrom="sm">
+                    <ColorSchemeControl />
 
-                        <ColorSchemeControl />
-                    </Group>
+
+
+
 
                 </Container>
             </AppShell.Header>
 
             <AppShell.Navbar ><SideMenu /></AppShell.Navbar>
 
-            <AppShell.Main><ListOtDetails /></AppShell.Main>
+            <AppShell.Main><div className='main'><ListOtDetails />
+            </div> </AppShell.Main>
         </AppShell>
     );
 };
