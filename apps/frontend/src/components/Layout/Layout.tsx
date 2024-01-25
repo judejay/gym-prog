@@ -1,13 +1,13 @@
 import React from 'react';
-import { AppShell, Burger, Button, ColorSchemeScript, Container, Group } from '@mantine/core';
+import { AppShell, Burger, ColorSchemeScript, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
-import { ColorSchemeControl, HeaderControls, SearchMobileControl } from '@mantinex/mantine-header';
-import { meta } from '@mantinex/mantine-meta';
+import { ColorSchemeControl } from '@mantinex/mantine-header';
 import ListOtDetails from '../ListOfDetails/ListOfDetails';
 import SideMenu from '../SideMenu/SideMenu';
 import { Logo } from '../Logo/Logo';
+import { ActionToggle } from '../ActionToggle/ActionToggle';
 
 
 interface LayoutProps {
@@ -28,7 +28,6 @@ const Layout: React.FC<LayoutProps> = () => {
             padding="sm"
         >
             <AppShell.Header className="zeroRight" >
-                <ColorSchemeScript defaultColorScheme="auto" localStorageKey="mantine-ui-color-scheme" />
 
                 <Container size="xl" px="md" className="inner">
                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -36,8 +35,7 @@ const Layout: React.FC<LayoutProps> = () => {
                         <Logo size={30} />
                     </div>
 
-                    <ColorSchemeControl />
-
+                    <ActionToggle />
 
 
 
