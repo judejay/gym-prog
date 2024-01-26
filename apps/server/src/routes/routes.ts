@@ -1,13 +1,9 @@
 import * as express from "express";
 import { Express } from "express";
-import {
-  fetchExerciseData,
-  weaklyValidateRoutine,
-} from "../services/exercise_service";
+
 import { addHealthCheck } from "./middleware/addHealthCheck";
 import { setContentJson } from "./middleware/setContentJson";
-import { getExercises } from "../controllers/exercise_controller";
-import * as exercise_controller from "../controllers/exercise_controller";
+import * as exerciseController from "../controllers/exercise_controller";
 export function initializeRoutes(app: Express) {
   console.log("🏗️  Setting up routers...");
 
@@ -22,7 +18,7 @@ function addAPIRoutes(app: Express) {
   const apiRouter = express.Router();
   apiRouter.use(setContentJson);
   console.log("📨  Adding GET exercises route...");
-  apiRouter.get("/exercises/", exercise_controller.getExercises);
+  apiRouter.get("/exercises/", exerciseController.getExercises);
 
   console.log("🛠️  Applying API router to Express server...");
   app.use("/api", apiRouter);
