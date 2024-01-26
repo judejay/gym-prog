@@ -8,10 +8,6 @@ export type Exercise = {
   equipment: string;
   exerciseId?: string;
   videoUrl?: string;
-  sets?: number;
-  reps?: number;
-  rest?: number;
-  order?: number;
 };
 
 export type Validation =
