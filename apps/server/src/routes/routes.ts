@@ -5,6 +5,7 @@ import {
   weaklyValidateRoutine,
 } from "../services/exercise_service";
 import * as EXERCISE from "../data/exercises.json";
+import { addHealthCheck } from "./addHealthCheck";
 
 export function initializeRoutes(app: Express) {
   console.log("🏗️  Setting up routers...");
@@ -12,25 +13,6 @@ export function initializeRoutes(app: Express) {
   addHealthCheck(app);
 
   addAPIRoutes(app);
-}
-
-function addHealthCheck(app: Express) {
-  console.log("🛠️  Creating base router...");
-
-  const baseRouter = express.Router();
-
-  baseRouter.use((req, res, next) => {
-    res.header("Access-Control-Allow-Methods", "GET");
-    console.log(`📨 ${req.url}`);
-    next();
-  });
-  console.log("🏠❤️‍🩹  Adding health check route...");
-  baseRouter.get("/health", (req, res) => {
-    res.status(200).send("👍 Okay! The server is responding! 🙌");
-  });
-
-  console.log("🛠️  Applying base router to Express server...");
-  app.use("/", baseRouter);
 }
 
 function addAPIRoutes(app: Express) {
