@@ -4,8 +4,8 @@ import {
   fetchExerciseData,
   weaklyValidateRoutine,
 } from "../services/exercise_service";
-import * as EXERCISE from "../data/exercises.json";
-import { addHealthCheck } from "./addHealthCheck";
+import { addHealthCheck } from "./middleware/addHealthCheck";
+import { setContentJson } from "./middleware/setContentJson";
 
 export function initializeRoutes(app: Express) {
   console.log("🏗️  Setting up routers...");
@@ -19,10 +19,7 @@ function addAPIRoutes(app: Express) {
   console.log("🛠️  Creating API router...");
 
   const apiRouter = express.Router();
-  apiRouter.use((req, res, next) => {
-    res.setHeader("Content-Type", "application/json");
-    next();
-  });
+  apiRouter.use(setContentJson);
   console.log("📨  Adding GET exercises route...");
   apiRouter.get("/exercises/", async (req, res) => {
     const exercises = await fetchExerciseData();
