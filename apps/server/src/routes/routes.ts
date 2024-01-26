@@ -6,7 +6,8 @@ import {
 } from "../services/exercise_service";
 import { addHealthCheck } from "./middleware/addHealthCheck";
 import { setContentJson } from "./middleware/setContentJson";
-
+import { getExercises } from "../controllers/exercise_controller";
+import * as exercise_controller from "../controllers/exercise_controller";
 export function initializeRoutes(app: Express) {
   console.log("🏗️  Setting up routers...");
 
@@ -21,13 +22,7 @@ function addAPIRoutes(app: Express) {
   const apiRouter = express.Router();
   apiRouter.use(setContentJson);
   console.log("📨  Adding GET exercises route...");
-  apiRouter.get("/exercises/", async (req, res) => {
-    const exercises = await fetchExerciseData();
-    const result = JSON.stringify({
-      exercises: exercises,
-    });
-    res.status(200).send(result);
-  });
+  apiRouter.get("/exercises/", exercise_controller.getExercises);
 
   console.log("🛠️  Applying API router to Express server...");
   app.use("/api", apiRouter);
