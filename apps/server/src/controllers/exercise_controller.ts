@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { fetchExerciseData } from "../services/exercise_service";
+import * as exerciseService from "../services/exercise_service";
 
 export const getExercises = async (req: Request, res: Response) => {
-  const exercises = await fetchExerciseData();
+  const exercises = await exerciseService.fetchExerciseData();
   const result = JSON.stringify({
     exercises: exercises,
   });
