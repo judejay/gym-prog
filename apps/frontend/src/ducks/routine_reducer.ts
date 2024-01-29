@@ -10,7 +10,7 @@ interface Action {
   type: string;
   text?: string;
   routine?: Routine;
-  taskId?: number;
+  routineId?: number;
 }
 export const initialState: Routine = {
   exercises: [],
@@ -26,7 +26,7 @@ export const useRoutineReducer = () => {
 
 export const routineReducer = (state: Routine, action: Action) => {
   switch (action.type) {
-    case "ADD_ROUTINE":
+    case "CREATE_ROUTINE":
       return {
         ...state,
         ...(action.payload as object),
@@ -73,6 +73,8 @@ export const routineReducer = (state: Routine, action: Action) => {
         ...state,
         order: action.payload,
       };
+    case "DELETE_ROUTINE":
+      return initialState;
     default:
       return state;
   }
