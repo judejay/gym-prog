@@ -4,6 +4,7 @@ import uuid4 from "uuid4";
 
 export interface Routine {
   exercises: Exercise[];
+  order: string; // Add the 'order' property to the 'Routine' interface
 }
 
 interface Action {
@@ -15,6 +16,7 @@ interface Action {
 }
 export const initialState: Routine = {
   exercises: [],
+  order: "",
 };
 
 export const useRoutineReducer = () => {
@@ -25,7 +27,7 @@ export const useRoutineReducer = () => {
   return { routine, dispatch };
 };
 
-export const routineReducer = (state: Routine, action: Action) => {
+export const routineReducer = (state: Routine, action: Action): Routine => {
   switch (action.type) {
     case "ADD_EXERCISE": {
       const id = uuid4();
@@ -74,7 +76,7 @@ export const routineReducer = (state: Routine, action: Action) => {
     case "UPDATE_ORDER":
       return {
         ...state,
-        order: action.payload,
+        order: action.routine?.order || "",
       };
     case "DELETE_ROUTINE":
       return initialState;
