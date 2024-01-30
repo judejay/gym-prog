@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { Exercise } from "../types/types";
+import uuid4 from "uuid4";
 
 export interface Routine {
   exercises: Exercise[];
@@ -26,11 +27,16 @@ export const useRoutineReducer = () => {
 
 export const routineReducer = (state: Routine, action: Action) => {
   switch (action.type) {
-    case "ADD_EXERCISE":
+    case "ADD_EXERCISE": {
+      const id = uuid4();
+      const exercise = { ...action.payload };
+      exercise.exerciseId = id;
       return {
         ...state,
-        exercises: [...state.exercises, action.payload],
+        exercises: [...state.exercises, exercise],
       };
+    }
+
     case "REMOVE_EXERCISE":
       return {
         ...state,

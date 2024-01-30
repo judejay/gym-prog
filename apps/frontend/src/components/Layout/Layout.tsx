@@ -1,9 +1,8 @@
 import React from 'react';
-import { AppShell, Burger, ColorSchemeScript, Container } from '@mantine/core';
+import { AppShell, Burger, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import '@mantinex/mantine-logo/styles.css';
 import './Layout.css';
-import { ColorSchemeControl } from '@mantinex/mantine-header';
 import ListOtDetails from '../ListOfDetails/ListOfDetails';
 import SideMenu from '../SideMenu/SideMenu';
 import { Logo } from '../Logo/Logo';

@@ -4,7 +4,6 @@ import { useMyContext } from '../../hooks/useMyContext';
 import TabsContainer from '../TabsContainer/TabsContainer';
 function ListOtDetails() {
     const { selectedExercise } = useMyContext();
-    console.log("selected", selectedExercise);
     if (!selectedExercise) {
         return (<h1>no exercise selected</h1>);
     }

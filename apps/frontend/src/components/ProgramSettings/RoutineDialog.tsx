@@ -8,7 +8,6 @@ const RoutineDialog: React.FC = () => {
     const { routine, dispatch } = useRoutineReducer();
 
     const { selectedExercise } = useMyContext();
-    console.log("selected", selectedExercise);
     function onHandleAddExercise(event: React.MouseEvent<HTMLElement>): void {
         event.preventDefault();
         if (selectedExercise) {
@@ -19,7 +18,7 @@ const RoutineDialog: React.FC = () => {
     }
 
     const rows = routine.exercises.map((element) => (
-        <Table.Tr key={element.name}>
+        <Table.Tr key={element.exerciseId}>
             <Table.Td>{element.name}</Table.Td>
             <Table.Td>{element.muscle}</Table.Td>
             <Table.Td>{element.difficulty}</Table.Td>

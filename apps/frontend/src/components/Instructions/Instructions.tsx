@@ -5,7 +5,6 @@ import CardHeading from '../CardHeading/CardHeading';
 
 const Instructions: React.FC = () => {
     const { selectedExercise } = useMyContext();
-    console.log("selected", selectedExercise);
     return (
         selectedExercise &&
         <Paper withBorder radius="md" className="card">
