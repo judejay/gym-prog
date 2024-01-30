@@ -2,12 +2,9 @@ import React from 'react'
 import { useMyContext } from '../../hooks/useMyContext';
 import { useRoutineReducer } from '../../ducks/routine_reducer';
 import { Table } from '@mantine/core';
-type RoutineDialogProps = {
-}
 
 
-
-const RoutineDialog: React.FC<RoutineDialogProps> = () => {
+const RoutineDialog: React.FC = () => {
     const { routine, dispatch } = useRoutineReducer();
 
     const { selectedExercise } = useMyContext();
@@ -37,7 +34,6 @@ const RoutineDialog: React.FC<RoutineDialogProps> = () => {
                 <Table.Thead>
                     <Table.Tr>
                         <Table.Th>Exercise name</Table.Th>
-
                         <Table.Th>Muscle</Table.Th>
                         <Table.Th>Difficulty</Table.Th>
                         <Table.Th>Equipment</Table.Th>

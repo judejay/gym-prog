@@ -17,7 +17,7 @@ function TabsContainer() {
         </Tabs.Tab>
 
         <Tabs.Tab value="settings" leftSection={<IconSettings style={iconStyle} />}>
-          Program Settings
+          Routine Settings
         </Tabs.Tab>
       </Tabs.List>
 
