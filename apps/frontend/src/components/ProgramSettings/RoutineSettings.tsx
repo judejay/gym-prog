@@ -1,17 +1,19 @@
-import React, { PureComponent } from 'react'
-import { useMyContext } from '../../hooks/useContext';
+import React from 'react'
 import CardHeading from '../CardHeading/CardHeading';
 import { Paper } from '@mantine/core';
 //import './RoutineSettings.css'
 import { useRoutineReducer } from '../../ducks/routine_reducer';
+import RoutineDialog from './RoutineDialog';
+
 type Props = {}
 
 const RoutineSettings: React.FC<Props> = () => {
-    const { routine, dispatch } = useRoutineReducer();
+    const { routine } = useRoutineReducer();
     console.log('routine', routine)
     return (
         <Paper withBorder radius="md" className="card">
             <CardHeading />
+            <RoutineDialog />
         </Paper>
 
     )
