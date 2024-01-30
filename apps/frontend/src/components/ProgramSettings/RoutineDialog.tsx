@@ -2,7 +2,7 @@ import React from 'react'
 import { useMyContext } from '../../hooks/useMyContext';
 import { useRoutineReducer } from '../../ducks/routine_reducer';
 import { Table } from '@mantine/core';
-
+import './RoutineDialog.css';
 
 const RoutineDialog: React.FC = () => {
     const { routine, dispatch } = useRoutineReducer();

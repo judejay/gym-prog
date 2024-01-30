@@ -26,12 +26,6 @@ export const useRoutineReducer = () => {
 
 export const routineReducer = (state: Routine, action: Action) => {
   switch (action.type) {
-    case "CREATE_ROUTINE":
-      return {
-        ...state,
-        ...(action.payload as object),
-      };
-
     case "ADD_EXERCISE":
       return {
         ...state,
