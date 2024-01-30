@@ -23,6 +23,7 @@ const RoutineDialog: React.FC = () => {
             <Table.Td>{element.muscle}</Table.Td>
             <Table.Td>{element.difficulty}</Table.Td>
             <Table.Td>{element.equipment}</Table.Td>
+            <Table.Td><button onClick={() => dispatch({ type: 'REMOVE_EXERCISE', payload: element })}>Remove</button></Table.Td>
         </Table.Tr>
     ));
 

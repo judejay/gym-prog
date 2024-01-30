@@ -41,8 +41,11 @@ export const routineReducer = (state: Routine, action: Action) => {
       return {
         ...state,
         exercises: state.exercises.filter((exercise) => {
-          if (typeof action.payload === "object" && "name" in action.payload) {
-            return exercise.name !== action.payload.name;
+          if (
+            typeof action.payload === "object" &&
+            "exerciseId" in action.payload
+          ) {
+            return exercise.exerciseId !== action.payload.exerciseId;
           }
           return true;
         }),
