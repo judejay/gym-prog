@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMyContext } from '../../hooks/useMyContext';
 import { useRoutineReducer } from '../../ducks/routine_reducer';
-import { Box, NumberInput, Table } from '@mantine/core';
+import { Box, Button, NumberInput, Table } from '@mantine/core';
 import './RoutineDialog.css';
 import { isInRange, isNotEmpty, useForm } from '@mantine/form';
 
@@ -15,8 +15,7 @@ const RoutineDialog: React.FC = () => {
     const { routine, dispatch } = useRoutineReducer();
 
     const { selectedExercise } = useMyContext();
-    function onHandleAddExercise(event: React.MouseEvent<HTMLElement>): void {
-        event.preventDefault();
+    function onHandleAddExercise(): void {
         if (selectedExercise) {
             selectedExercise.reps = form.values.reps;
             selectedExercise.sets = form.values.sets;
@@ -28,7 +27,7 @@ const RoutineDialog: React.FC = () => {
 
 
     const form = useForm<FormValues>({
-        initialValues: { name: '', reps: 1, sets: 1 },
+        initialValues: { name: selectedExercise?.name, reps: 1, sets: 1 },
         validate: {
             name: isNotEmpty('Name is required'),
             reps: isInRange({ min: 1 }, 'You must do at least 1 rep'),
@@ -49,12 +48,13 @@ const RoutineDialog: React.FC = () => {
 
     return (
         <div>
-            <Box maw={340} mx="auto" mb="md">
-                <NumberInput {...form.getInputProps('reps')} label="Reps" placeholder="Reps" mt="md" />
-                <NumberInput {...form.getInputProps('sets')} label="Sets" placeholder="Sets" mt="md" />
-            </Box >
-            <button onClick={onHandleAddExercise}>Add to Routine  </button>
-            <Table stickyHeader stickyHeaderOffset={60}>
+            <form onSubmit={form.onSubmit(onHandleAddExercise)}>
+                <Box maw={340} mx="auto" mb="md">
+                    <NumberInput {...form.getInputProps('reps')} label="Reps" placeholder="Reps" mt="md" />
+                    <NumberInput {...form.getInputProps('sets')} label="Sets" placeholder="Sets" mt="md" />
+                </Box >
+                <Button type="submit" >Add to Routine  </Button>
+            </form> <Table stickyHeader stickyHeaderOffset={60}>
                 <Table.Thead>
                     <Table.Tr>
                         <Table.Th>Exercise name</Table.Th>
