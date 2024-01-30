@@ -1,8 +1,8 @@
-import { Container, Tabs, rem } from '@mantine/core';
+import { Tabs, rem } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons-react';
 import Detail from '../Instructions/Instructions';
 import Video from '../Video/Video';
-import ProgramSettings from '../ProgramSettings/ProgramSettings';
+import RoutineSettings from '../ProgramSettings/RoutineSettings';
 
 function TabsContainer() {
   const iconStyle = { width: rem(12), height: rem(12) };
@@ -29,7 +29,7 @@ function TabsContainer() {
         <Detail />      </Tabs.Panel>
 
       <Tabs.Panel value="settings">
-        <ProgramSettings />
+        <RoutineSettings />
       </Tabs.Panel>
     </Tabs>
   );
