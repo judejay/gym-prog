@@ -8,6 +8,7 @@ export interface Routine {
 }
 
 interface Action {
+  //TODO: add Routine for payload
   payload: Exercise;
   type: string;
   text?: string;

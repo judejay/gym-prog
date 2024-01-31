@@ -1,5 +1,5 @@
 import "./App.css";
-import { ExerciseContextProvider } from "./hooks/useContext";
+import { ExerciseContextProvider } from "./ducks/exerciseContextProvider";
 import Layout from "./components/Layout/Layout";
 import SideMenu from "./components/SideMenu/SideMenu";
 import cx from "clsx";

@@ -1,5 +1,8 @@
 import { useContext } from "react";
-import { ExerciseContext, ContextProps } from "./useContext";
+import {
+  ExerciseContext,
+  ContextProps,
+} from "../ducks/exerciseContextProvider";
 
 export const useExerciseContext = (): ContextProps => {
   const context = useContext(ExerciseContext);
