@@ -1,5 +1,5 @@
 import "./App.css";
-import { ExerciseContextProvider } from "./ducks/exerciseContextProvider";
+import { ExerciseContextProvider } from "./state/exerciseContextProvider";
 import Layout from "./components/Layout/Layout";
 import SideMenu from "./components/SideMenu/SideMenu";
 import cx from "clsx";
@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { RoutineContext } from "./state/Routine_Context";
 import { useReducer } from "react";
-import { initialState, routineReducer } from "./ducks/routine_reducer";
+import { initialState, RoutineReducer } from "./state/routine_reducer";
 
 const theme = createTheme({
   components: {
@@ -23,7 +23,7 @@ const theme = createTheme({
   },
 });
 function App() {
-  const [state, dispatch] = useReducer(routineReducer, initialState);
+  const [state, dispatch] = useReducer(RoutineReducer, initialState);
   return (
     <ExerciseContextProvider>
       <RoutineContext.Provider value={{ state, dispatch }}>

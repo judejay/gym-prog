@@ -4,7 +4,7 @@ import { Box, Button, NumberInput, Table } from "@mantine/core";
 import "./RoutineDialog.css";
 import { isInRange, isNotEmpty, useForm } from "@mantine/form";
 import { RoutineContext } from "../../state/Routine_Context";
-import { ActionType } from "../../ducks/Actions/actions";
+import { ActionType } from "../../state/actions";
 
 interface FormValues {
   name: string;

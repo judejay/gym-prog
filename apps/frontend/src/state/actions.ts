@@ -1,4 +1,4 @@
-import { Exercise } from "../../types/types";
+import { Exercise } from "../types/types";
 
 export enum ActionType {
   ADD_EXERCISE = "ADD_EXERCISE",

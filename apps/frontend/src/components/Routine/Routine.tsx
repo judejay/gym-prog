@@ -3,7 +3,6 @@ import { RoutineContext } from "../../state/Routine_Context";
 
 const Routine: React.FC = () => {
   const { state } = useContext(RoutineContext);
-  console.log("state", state);
   return (
     <div>
       <h1>Routine</h1>

@@ -1,7 +1,6 @@
-import { useReducer } from "react";
 import { Exercise, Routine } from "../types/types";
 import uuid4 from "uuid4";
-import { ActionType, RoutineAction } from "./Actions/actions";
+import { ActionType, RoutineAction } from "./actions";
 
 export interface Action {
   //TODO: add Routine for payload
@@ -16,15 +15,7 @@ export const initialState: Routine = {
   order: "",
 };
 
-export const useRoutineReducer = () => {
-  const [routine, dispatch] = useReducer<React.Reducer<Routine, RoutineAction>>(
-    routineReducer,
-    initialState
-  );
-  return { routine, dispatch };
-};
-
-export const routineReducer = (
+export const RoutineReducer = (
   state: Routine,
   action: RoutineAction
 ): Routine => {
