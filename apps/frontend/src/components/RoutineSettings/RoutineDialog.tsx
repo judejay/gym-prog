@@ -8,8 +8,8 @@ import { isInRange, isNotEmpty, useForm } from '@mantine/form';
 
 interface FormValues {
     name: string;
-    reps: number | string;
-    sets: number | string;
+    reps: number;
+    sets: number;
 }
 const RoutineDialog: React.FC = () => {
     const { routine, dispatch } = useRoutineReducer();
@@ -17,8 +17,8 @@ const RoutineDialog: React.FC = () => {
     const { selectedExercise } = useMyContext();
     function onHandleAddExercise(): void {
         if (selectedExercise) {
-            selectedExercise.reps = form.values.reps;
-            selectedExercise.sets = form.values.sets;
+            selectedExercise.reps = form.values.reps.toString();
+            selectedExercise.sets = form.values.sets.toString();
             dispatch({ type: 'ADD_EXERCISE', payload: selectedExercise });
         } else {
             console.error('No exercise selected');
@@ -27,7 +27,7 @@ const RoutineDialog: React.FC = () => {
 
 
     const form = useForm<FormValues>({
-        initialValues: { name: selectedExercise?.name, reps: 1, sets: 1 },
+        initialValues: { name: selectedExercise?.name || '', reps: 1, sets: 1 },
         validate: {
             name: isNotEmpty('Name is required'),
             reps: isInRange({ min: 1 }, 'You must do at least 1 rep'),
