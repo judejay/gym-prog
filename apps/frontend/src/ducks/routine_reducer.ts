@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { Exercise, Routine } from "../types/types";
 import uuid4 from "uuid4";
+import { ActionType, RoutineAction } from "./Actions/actions";
 
 export interface Action {
   //TODO: add Routine for payload
@@ -16,16 +17,19 @@ export const initialState: Routine = {
 };
 
 export const useRoutineReducer = () => {
-  const [routine, dispatch] = useReducer<React.Reducer<Routine, Action>>(
+  const [routine, dispatch] = useReducer<React.Reducer<Routine, RoutineAction>>(
     routineReducer,
     initialState
   );
   return { routine, dispatch };
 };
 
-export const routineReducer = (state: Routine, action: Action): Routine => {
+export const routineReducer = (
+  state: Routine,
+  action: RoutineAction
+): Routine => {
   switch (action.type) {
-    case "ADD_EXERCISE": {
+    case ActionType.ADD_EXERCISE: {
       const id = uuid4();
       const exercise = { ...action.payload };
       exercise.exerciseId = id;
@@ -35,7 +39,7 @@ export const routineReducer = (state: Routine, action: Action): Routine => {
       };
     }
 
-    case "REMOVE_EXERCISE":
+    case ActionType.REMOVE_EXERCISE:
       return {
         ...state,
         exercises: state.exercises.filter((exercise) => {
@@ -48,34 +52,7 @@ export const routineReducer = (state: Routine, action: Action): Routine => {
           return true;
         }),
       };
-    case "UPDATE_EXERCISE":
-      return {
-        ...state,
-        exercises: state.exercises.map((exercise) => {
-          if (
-            action.payload &&
-            typeof action.payload === "object" &&
-            "name" in action.payload &&
-            exercise.name === action.payload.name
-          ) {
-            return action.payload;
-          } else {
-            return exercise;
-          }
-        }),
-      };
-    case "UPDATE_ROUTINE":
-      return {
-        ...state,
-        ...(action.payload as object),
-      };
-    case "UPDATE_ORDER":
-      return {
-        ...state,
-        order: action.routine?.order || "",
-      };
-    case "DELETE_ROUTINE":
-      return initialState;
+
     default:
       return state;
   }

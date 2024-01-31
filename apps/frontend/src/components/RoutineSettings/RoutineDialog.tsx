@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useExerciseContext } from "../../hooks/useExerciseContext";
-import { useRoutineReducer } from "../../ducks/routine_reducer";
 import { Box, Button, NumberInput, Table } from "@mantine/core";
 import "./RoutineDialog.css";
 import { isInRange, isNotEmpty, useForm } from "@mantine/form";
+import { RoutineContext } from "../../state/Routine_Context";
+import { ActionType } from "../../ducks/Actions/actions";
 
 interface FormValues {
   name: string;
   reps: number;
   sets: number;
 }
+
 const RoutineDialog: React.FC = () => {
-  const { routine, dispatch } = useRoutineReducer();
+  const { state, dispatch } = useContext(RoutineContext);
 
   const { selectedExercise } = useExerciseContext();
   function onHandleAddExercise(): void {
     if (selectedExercise) {
       selectedExercise.reps = form.values.reps.toString();
       selectedExercise.sets = form.values.sets.toString();
-      dispatch({ type: "ADD_EXERCISE", payload: selectedExercise });
+      dispatch({ type: ActionType.ADD_EXERCISE, payload: selectedExercise });
     } else {
       console.error("No exercise selected");
     }
@@ -32,7 +34,7 @@ const RoutineDialog: React.FC = () => {
       sets: isInRange({ min: 1 }, "You must do at least 1 set"),
     },
   });
-  const rows = routine.exercises.map((exercise) => (
+  const rows = state.exercises.map((exercise) => (
     <Table.Tr key={exercise.exerciseId}>
       <Table.Td>{exercise.name}</Table.Td>
       <Table.Td>{exercise.muscle}</Table.Td>
@@ -43,7 +45,7 @@ const RoutineDialog: React.FC = () => {
       <Table.Td>
         <button
           onClick={() =>
-            dispatch({ type: "REMOVE_EXERCISE", payload: exercise })
+            dispatch({ type: ActionType.REMOVE_EXERCISE, payload: exercise })
           }
         >
           Remove

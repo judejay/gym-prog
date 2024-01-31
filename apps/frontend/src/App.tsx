@@ -9,7 +9,9 @@ import {
   createTheme,
   localStorageColorSchemeManager,
 } from "@mantine/core";
-import { RoutineContextProvider } from "./ducks/routineContextProvider";
+import { RoutineContext } from "./state/Routine_Context";
+import { useReducer } from "react";
+import { initialState, routineReducer } from "./ducks/routine_reducer";
 
 const theme = createTheme({
   components: {
@@ -21,9 +23,10 @@ const theme = createTheme({
   },
 });
 function App() {
+  const [state, dispatch] = useReducer(routineReducer, initialState);
   return (
     <ExerciseContextProvider>
-      <RoutineContextProvider>
+      <RoutineContext.Provider value={{ state, dispatch }}>
         <MantineProvider
           theme={theme}
           defaultColorScheme="auto"
@@ -35,7 +38,7 @@ function App() {
             <Layout children={<SideMenu />} />
           </Container>
         </MantineProvider>
-      </RoutineContextProvider>
+      </RoutineContext.Provider>
     </ExerciseContextProvider>
   );
 }
