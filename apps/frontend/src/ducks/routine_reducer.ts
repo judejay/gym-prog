@@ -4,7 +4,7 @@ import uuid4 from "uuid4";
 
 export interface Routine {
   exercises: Exercise[];
-  order: string; // Add the 'order' property to the 'Routine' interface
+  order: string;
 }
 
 interface Action {

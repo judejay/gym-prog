@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import './SideMenu.css'
-import '@mantinex/mantine-logo/styles.css';
-import '@mantine/core/styles.css';
-import { useMyContext } from "../../hooks/useMyContext";
-import SelectGroup from '../SelectGroup/SelectGroup';
-import { Container } from '@mantine/core';
+import { useState } from "react";
+import "./SideMenu.css";
+import "@mantinex/mantine-logo/styles.css";
+import "@mantine/core/styles.css";
+import { useExerciseContext } from "../../hooks/useExerciseContext";
+import SelectGroup from "../SelectGroup/SelectGroup";
+import { Container } from "@mantine/core";
+
 function SideMenu() {
   const [errorMessage] = useState<string>();
-  const [activeLink, setActiveLink] = useState('Settings');
-  const { exerciseData, setSelectedExercise, filteredData } = useMyContext();
-
-
+  const [activeLink, setActiveLink] = useState("Settings");
+  const { exerciseData, setSelectedExercise, filteredData } =
+    useExerciseContext();
 
   function setActiveExercise(name: string) {
     setActiveLink(name);
@@ -24,20 +24,19 @@ function SideMenu() {
   return (
     <nav className="navbar">
       <div className="aside">
-        <div className='logo'>
+        <div className="logo">
           <SelectGroup />
         </div>
 
-
-        <Container className='container' size='xl' px='md'>
+        <Container className="container" size="xl" px="md">
           <div>
-
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           </div>
 
           {exercises &&
             exercises.map((link) => (
-              <a className='link'
+              <a
+                className="link"
                 data-active={activeLink === link.name || undefined}
                 href="#"
                 onClick={(event) => {
@@ -55,5 +54,4 @@ function SideMenu() {
   );
 }
 
-
-export default SideMenu
+export default SideMenu;

@@ -23,10 +23,7 @@ export const ExerciseContext = createContext<ContextProps | undefined>(
 
 const serverUrl = "http://localhost:3000/api/exercises";
 
-
-
-
-export const MyContextProvider: React.FC<Props> = ({ children }) => {
+export const ExerciseContextProvider: React.FC<Props> = ({ children }) => {
   const [filteredData, setFilteredData] = useState<Exercise[]>([]);
   const [exerciseData, setExerciseData] = useState<Exercise[]>([]);
   const [selected, setSelected] = useState<Exercise | null>(null);
@@ -50,7 +47,8 @@ export const MyContextProvider: React.FC<Props> = ({ children }) => {
   }, [fetchData, setExerciseData]);
 
   const contextValue: ContextProps = {
-    filteredData, setFilteredData,
+    filteredData,
+    setFilteredData,
     fetchData,
     exerciseData,
     setExerciseData,
