@@ -9,6 +9,7 @@ import {
   createTheme,
   localStorageColorSchemeManager,
 } from "@mantine/core";
+import { RoutineContextProvider } from "./ducks/routineContextProvider";
 
 const theme = createTheme({
   components: {
@@ -22,17 +23,19 @@ const theme = createTheme({
 function App() {
   return (
     <ExerciseContextProvider>
-      <MantineProvider
-        theme={theme}
-        defaultColorScheme="auto"
-        colorSchemeManager={localStorageColorSchemeManager({
-          key: "mantine-ui-color-scheme",
-        })}
-      >
-        <Container size="responsive" bg="var(--mantine-color-blue-light)">
-          <Layout children={<SideMenu />} />
-        </Container>
-      </MantineProvider>
+      <RoutineContextProvider>
+        <MantineProvider
+          theme={theme}
+          defaultColorScheme="auto"
+          colorSchemeManager={localStorageColorSchemeManager({
+            key: "mantine-ui-color-scheme",
+          })}
+        >
+          <Container size="responsive" bg="var(--mantine-color-blue-light)">
+            <Layout children={<SideMenu />} />
+          </Container>
+        </MantineProvider>
+      </RoutineContextProvider>
     </ExerciseContextProvider>
   );
 }

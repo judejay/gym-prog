@@ -12,6 +12,11 @@ export type Exercise = {
   sets?: string;
 };
 
+export interface Routine {
+  exercises: Exercise[];
+  order: string;
+}
+
 export type Validation =
   | {
       valid: true;

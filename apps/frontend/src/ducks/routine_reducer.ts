@@ -1,13 +1,8 @@
 import { useReducer } from "react";
-import { Exercise } from "../types/types";
+import { Exercise, Routine } from "../types/types";
 import uuid4 from "uuid4";
 
-export interface Routine {
-  exercises: Exercise[];
-  order: string;
-}
-
-interface Action {
+export interface Action {
   //TODO: add Routine for payload
   payload: Exercise;
   type: string;

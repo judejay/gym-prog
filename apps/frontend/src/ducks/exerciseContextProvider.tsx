@@ -8,7 +8,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export interface ContextProps {
+export interface ExerciseContextProps {
   filteredData: Exercise[];
   selectedExercise: Exercise | null;
   fetchData: () => Promise<ResponseData>;
@@ -17,7 +17,7 @@ export interface ContextProps {
   setFilteredData: React.Dispatch<React.SetStateAction<Exercise[]>>;
   setSelectedExercise: React.Dispatch<React.SetStateAction<Exercise | null>>;
 }
-export const ExerciseContext = createContext<ContextProps | undefined>(
+export const ExerciseContext = createContext<ExerciseContextProps | undefined>(
   undefined
 );
 
@@ -46,7 +46,7 @@ export const ExerciseContextProvider: React.FC<Props> = ({ children }) => {
     fetchDataFromApi();
   }, [fetchData, setExerciseData]);
 
-  const contextValue: ContextProps = {
+  const contextValue: ExerciseContextProps = {
     filteredData,
     setFilteredData,
     fetchData,
