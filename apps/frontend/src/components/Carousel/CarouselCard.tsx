@@ -1,9 +1,8 @@
-import { Paper, Text, Title, Button } from "@mantine/core";
+import { Paper, Text } from "@mantine/core";
 import "./CarouselCard.css";
 
 interface CardProps {
   name: string;
-  muscle: string;
 }
 
 function CarouselCard({ name }: CardProps) {
