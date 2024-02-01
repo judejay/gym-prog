@@ -55,7 +55,7 @@ const RoutineDialog: React.FC = () => {
   ));
 
   return (
-    <div>
+    <>
       <form onSubmit={form.onSubmit(onHandleAddExercise)}>
         <Box maw={340} mx="auto" mb="md">
           <NumberInput
@@ -72,7 +72,7 @@ const RoutineDialog: React.FC = () => {
           />
         </Box>
         <Button type="submit">Add to Routine </Button>
-      </form>{" "}
+      </form>
       <Table stickyHeader stickyHeaderOffset={60}>
         <Table.Thead>
           <Table.Tr>
@@ -87,7 +87,7 @@ const RoutineDialog: React.FC = () => {
         <Table.Tbody>{rows}</Table.Tbody>
         <Table.Caption>Scroll page to see sticky table head</Table.Caption>
       </Table>
-    </div>
+    </>
   );
 };
 
