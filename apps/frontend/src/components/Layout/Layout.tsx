@@ -3,7 +3,7 @@ import { AppShell, Burger, Container } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import "@mantinex/mantine-logo/styles.css";
 import "./Layout.css";
-import ListOtDetails from "../ListOfDetails/ListOfDetails";
+import ListOfDetails from "../ListOfDetails/ListOfDetails";
 import SideMenu from "../SideMenu/SideMenu";
 import { Logo } from "../Logo/Logo";
 import { ActionToggle } from "../ActionToggle/ActionToggle";
@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutProps> = () => {
 
       <AppShell.Main>
         <div className="main">
-          <ListOtDetails />
+          <ListOfDetails />
         </div>{" "}
       </AppShell.Main>
     </AppShell>

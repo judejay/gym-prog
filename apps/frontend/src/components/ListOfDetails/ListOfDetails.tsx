@@ -3,7 +3,7 @@ import "./ListOfDetails.css";
 import { useExerciseContext } from "../../hooks/useExerciseContext";
 import TabsContainer from "../TabsContainer/TabsContainer";
 
-function ListOtDetails() {
+function ListOfDetails() {
   const { selectedExercise } = useExerciseContext();
   if (!selectedExercise) {
     return <h1>no exercise selected</h1>;
@@ -23,4 +23,4 @@ function ListOtDetails() {
   );
 }
 
-export default ListOtDetails;
+export default ListOfDetails;
