@@ -1,7 +1,6 @@
 import "./App.css";
 import { ExerciseContextProvider } from "./state/exerciseContextProvider";
-import Layout from "./components/Layout/Layout";
-import SideMenu from "./components/SideMenu/SideMenu";
+
 import cx from "clsx";
 import {
   Container,
@@ -12,6 +11,8 @@ import {
 import { RoutineContext } from "./state/Routine_Context";
 import { useReducer } from "react";
 import { initialState, RoutineReducer } from "./state/routine_reducer";
+import Router from "./components/Router/Router";
+import { BrowserRouter } from "react-router-dom";
 
 const theme = createTheme({
   components: {
@@ -35,7 +36,9 @@ function App() {
           })}
         >
           <Container size="responsive" bg="var(--mantine-color-blue-light)">
-            <Layout children={<SideMenu />} />
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
           </Container>
         </MantineProvider>
       </RoutineContext.Provider>

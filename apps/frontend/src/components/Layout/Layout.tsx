@@ -3,10 +3,9 @@ import { AppShell, Burger, Container } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import "@mantinex/mantine-logo/styles.css";
 import "./Layout.css";
-import ListOfDetails from "../ListOfDetails/ListOfDetails";
-import SideMenu from "../SideMenu/SideMenu";
 import { Logo } from "../Logo/Logo";
 import { ActionToggle } from "../ActionToggle/ActionToggle";
+import { Outlet } from "react-router-dom";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -35,13 +34,9 @@ const Layout: React.FC<LayoutProps> = () => {
         </Container>
       </AppShell.Header>
 
-      <AppShell.Navbar>
-        <SideMenu />
-      </AppShell.Navbar>
-
       <AppShell.Main>
         <div className="main">
-          <ListOfDetails />
+          <Outlet />
         </div>{" "}
       </AppShell.Main>
     </AppShell>

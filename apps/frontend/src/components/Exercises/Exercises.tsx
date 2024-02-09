@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SideMenu.css";
+import "./Exercises.css";
 import "@mantinex/mantine-logo/styles.css";
 import "@mantine/core/styles.css";
 import { useExerciseContext } from "../../hooks/useExerciseContext";
