@@ -5,6 +5,7 @@ import "@mantine/core/styles.css";
 import { useExerciseContext } from "../../hooks/useExerciseContext";
 import SelectGroup from "../SelectGroup/SelectGroup";
 import { Container } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 function Exercises() {
   const [errorMessage] = useState<string>();
@@ -29,21 +30,17 @@ function Exercises() {
         <div>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
-
         {exercises &&
           exercises.map((link) => (
-            <a
+            <Link
+              to="/exercise"
+              onClick={() => setActiveExercise(link.name)}
               className="link"
               data-active={activeLink === link.name || undefined}
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                setActiveExercise(link.name);
-              }}
               key={link.name}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
       </Container>
     </>

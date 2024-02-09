@@ -7,22 +7,12 @@ import { Logo } from "../Logo/Logo";
 import { ActionToggle } from "../ActionToggle/ActionToggle";
 import { Outlet } from "react-router-dom";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+interface LayoutProps {}
 const Layout: React.FC<LayoutProps> = () => {
   const [opened, { toggle }] = useDisclosure();
 
   return (
-    <AppShell
-      header={{ height: 60 }}
-      navbar={{
-        width: 300,
-        breakpoint: "sm",
-        collapsed: { mobile: !opened },
-      }}
-      padding="sm"
-    >
+    <AppShell header={{ height: 60 }} padding="sm">
       <AppShell.Header className="zeroRight">
         <Container size="xl" px="md" className="inner">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
@@ -31,7 +21,7 @@ const Layout: React.FC<LayoutProps> = () => {
           </div>
 
           <ActionToggle />
-        </Container>
+        </Container>{" "}
       </AppShell.Header>
 
       <AppShell.Main>
