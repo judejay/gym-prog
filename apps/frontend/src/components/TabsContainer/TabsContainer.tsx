@@ -4,7 +4,7 @@ import {
   IconMessageCircle,
   IconSettings,
 } from "@tabler/icons-react";
-import Detail from "../Instructions/Instructions";
+import Instructions from "../Instructions/Instructions";
 import Video from "../Video/Video";
 import RoutineSettings from "../RoutineSettings/RoutineSettings";
 import Routine from "../Routine/Routine";
@@ -49,7 +49,7 @@ function TabsContainer() {
       </Tabs.Panel>
 
       <Tabs.Panel value="instructions">
-        <Detail />
+        <Instructions />
       </Tabs.Panel>
 
       <Tabs.Panel value="settings">

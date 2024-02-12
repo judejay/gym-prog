@@ -40,9 +40,7 @@ const Layout: React.FC<LayoutProps> = () => {
       </AppShell.Navbar>
 
       <AppShell.Main>
-        <div className="main">
-          <ListOfDetails />
-        </div>{" "}
+        <ListOfDetails />
       </AppShell.Main>
     </AppShell>
   );
