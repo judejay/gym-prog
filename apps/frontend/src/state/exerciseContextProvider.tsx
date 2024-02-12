@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import { Exercise } from "../types/types";
+import * as serverUrl from "../data/exercises.json";
 
 export interface ResponseData {
   exercises: Exercise[];
@@ -21,16 +22,20 @@ export const ExerciseContext = createContext<ExerciseContextProps | undefined>(
   undefined
 );
 
-const serverUrl = "http://localhost:3000/api/exercises";
+//const serverUrl = "http://localhost:3000/api/exercises";
 
 export const ExerciseContextProvider: React.FC<Props> = ({ children }) => {
   const [filteredData, setFilteredData] = useState<Exercise[]>([]);
   const [exerciseData, setExerciseData] = useState<Exercise[]>([]);
   const [selected, setSelected] = useState<Exercise | null>(null);
   const fetchData = useCallback(async (): Promise<ResponseData> => {
-    const response = await fetch(serverUrl);
-    const data = await response.json();
-    return data;
+    //const response = await fetch();
+    const data = serverUrl;
+    const exercisesWithVideoUrl = data.exercises.map((exercise) => ({
+      ...exercise,
+      videoUrl: "https://www.youtube.com/embed/w86EalEoFRY",
+    }));
+    return { exercises: exercisesWithVideoUrl };
   }, []);
 
   useEffect(() => {

@@ -1,13 +1,12 @@
 export type Exercise = {
   name: string;
   type: string;
-  description: string;
   difficulty: string;
   instructions: string;
   muscle: string;
   equipment: string;
   exerciseId?: string;
-  videoUrl?: string;
+  videoUrl: string;
   reps?: string;
   sets?: string;
 };
