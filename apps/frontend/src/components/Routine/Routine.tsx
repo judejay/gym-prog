@@ -3,7 +3,8 @@ import { RoutineContext } from "../../state/Routine_Context";
 import CarouselCard from "../Carousel/CarouselCard";
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
-import { useMantineTheme, rem } from "@mantine/core";
+import { useMantineTheme, rem, Paper, Text } from "@mantine/core";
+import CardHeading from "../CardHeading/CardHeading";
 
 const Routine: React.FC = () => {
   const theme = useMantineTheme();
@@ -14,6 +15,16 @@ const Routine: React.FC = () => {
       <CarouselCard {...item} />
     </Carousel.Slide>
   ));
+  if (slides.length === 0)
+    return (
+      <Paper withBorder radius="md" className="card">
+        <CardHeading />
+        <Text size="sm" mt="sm" c="dimmed">
+          Add Exercises in Routine Settings
+        </Text>
+      </Paper>
+    );
+
   return (
     <Carousel
       slideSize={{ base: "100%", sm: "50%" }}
